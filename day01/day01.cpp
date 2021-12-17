@@ -16,15 +16,15 @@ unsigned int part_one() {
 unsigned int part_two() {
   std::ifstream fin("input2.txt");
   std::istream_iterator<unsigned int> fit(fin);
-  unsigned int prevprev = 0, prev = 0, curr = 0, sum = INT32_MAX;
-  prevprev = std::exchange(prev, std::exchange(curr, *fit++));
-  prevprev = std::exchange(prev, std::exchange(curr, *fit++));
-  return std::count_if(fit, std::istream_iterator<unsigned int>(),
-                       [&](const unsigned int i) {
-                         prevprev = std::exchange(prev, std::exchange(curr, i));
-                         return (std::exchange(sum, prevprev + prev + curr) <
-                                 prevprev + prev + curr);
-                       });
+  unsigned int prevprev = *fit++;
+  unsigned int prev = *fit++;
+  return std::count_if(
+      fit, std::istream_iterator<unsigned int>(),
+      [&, curr = 0, sum = INT32_MAX](const unsigned int i) mutable -> bool {
+        prevprev = std::exchange(prev, std::exchange(curr, i));
+        return (std::exchange(sum, prevprev + prev + curr) <
+                prevprev + prev + curr);
+      });
 }
 int main() {
   std::cout << "Part one: " << part_one() << std::endl;
