@@ -9,6 +9,8 @@
 #include <unordered_map>
 #include <vector>
 
+// Prompt: https://adventofcode.com/2021/day/2
+
 unsigned int part_one() {
   std::unordered_map<std::string, int> m;
   std::ifstream fin("input.txt");
