@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 
+//Prompt: https://adventofcode.com/2021/day/1
+
 unsigned int part_one() {
   std::ifstream fin("input1.txt");
   std::istream_iterator<unsigned int> fit(fin);
