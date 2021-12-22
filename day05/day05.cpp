@@ -55,7 +55,7 @@ auto draw_lines(bool ignore_diag) -> const int {
   std::unordered_set<coord> intersect;
   while (not fin.eof()) {
     auto [p1, p2] = read_line(fin);
-    if (ignore_diag and (p1.x != p2.x and p1.y != p2.y)) {
+    if (ignore_diag && p1.x != p2.x && p1.y != p2.y) {
       continue;
     }
     (drawn.count(p2) > 0) ? intersect.insert(p2) : drawn.insert(p2);
@@ -78,8 +78,6 @@ auto draw_lines(bool ignore_diag) -> const int {
 auto part_one() -> const int { return draw_lines(true); }
 auto part_two() -> const int { return draw_lines(false); }
 int main() {
-  std::ifstream fin("../input.txt");
-  assert(fin.is_open());
   std::cout << "Part one: " << part_one() << std::endl;
   std::cout << "Part two: " << part_two() << std::endl;
   return 0;
