@@ -11,6 +11,7 @@
 #include <map>
 #include <tuple>
 #include <unordered_map>
+#include <unordered_set>
 #include <utility>
 #include <vector>
 
@@ -21,6 +22,17 @@ struct coord {
   int x;
   int y;
   auto operator<=>(const coord&) const = default;
+  friend auto operator<<(std::ostream& os, const coord& c) -> std::ostream& {
+    os << '{' << c.x << ", " << c.y << '}' << ' ';
+    return os;
+  }
+  friend auto operator>>(std::istream& is, coord& c) -> std::istream& {
+    std::string s;
+    getline(is, s, ',');
+    c.x = stoi(s);
+    is >> c.y;
+    return is;
+  }
 };
 template <>
 struct std::hash<coord> {
@@ -32,26 +44,23 @@ struct std::hash<coord> {
 };
 auto read_line(std::ifstream& fin) -> std::tuple<coord, coord> {
   coord p1, p2;
-  std::string s, arrow;
-  getline(fin, s, ',');
-  p1.x = stoi(s);
-  fin >> p1.y >> arrow;
-  getline(fin, s, ',');
-  p2.x = stoi(s);
-  fin >> p2.y;
+  std::string arrow;
+  fin >> p1 >> arrow >> p2;
   return {p1, p2};
 }
 auto draw_lines(bool ignore_diag) -> const int {
   std::ifstream fin("../input.txt");
   assert(fin.is_open());
-  std::unordered_map<coord, int> m;
+  std::unordered_set<coord> drawn;
+  std::unordered_set<coord> intersect;
   while (not fin.eof()) {
     auto [p1, p2] = read_line(fin);
     if (ignore_diag and (p1.x != p2.x and p1.y != p2.y)) {
       continue;
     }
+    (drawn.count(p2) > 0) ? intersect.insert(p2) : drawn.insert(p2);
     while (p1 != p2) {
-      m[p1]++;
+      (drawn.count(p1) > 0) ? intersect.insert(p1) : drawn.insert(p1);
       if (p1.x < p2.x) {
         p1.x++;
       } else if (p2.x < p1.x) {
@@ -63,10 +72,8 @@ auto draw_lines(bool ignore_diag) -> const int {
         p1.y--;
       }
     }
-    m[p1]++;
   }
-  return std::count_if(m.begin(), m.end(),
-                       [&m](auto x) { return x.second > 1; });
+  return intersect.size();
 }
 auto part_one() -> const int { return draw_lines(true); }
 auto part_two() -> const int { return draw_lines(false); }
