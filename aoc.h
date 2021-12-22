@@ -12,6 +12,7 @@
 #include <iostream>
 #include <iterator>
 #include <numeric>
+#include <queue>
 #include <sstream>
 #include <string>
 #include <tuple>
