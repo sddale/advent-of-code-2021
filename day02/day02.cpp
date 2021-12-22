@@ -1,19 +1,10 @@
-#include <algorithm>
-#include <cstddef>
-#include <cstdint>
-#include <fstream>
-#include <iostream>
-#include <iterator>
-#include <sstream>
-#include <string>
-#include <unordered_map>
-#include <vector>
+#include "../aoc.h"
 
 // Prompt: https://adventofcode.com/2021/day/2
 
 unsigned int part_one() {
   std::unordered_map<std::string, int> m;
-  std::ifstream fin("input.txt");
+  std::ifstream fin("../input.txt");
   std::string s;
   unsigned int num;
   while (getline(fin, s)) {
@@ -25,7 +16,7 @@ unsigned int part_one() {
 }
 unsigned int part_two() {
   std::unordered_map<std::string, int> m;
-  std::ifstream fin("input.txt");
+  std::ifstream fin("../input.txt");
   std::string s;
   unsigned int aim;
   unsigned int num;

@@ -1,13 +1,4 @@
-#include <algorithm>
-#include <array>
-#include <bitset>
-#include <cstdio>
-#include <fstream>
-#include <functional>
-#include <iostream>
-#include <iterator>
-#include <unordered_map>
-#include <vector>
+#include "../aoc.h"
 
 // Prompt: https://adventofcode.com/2021/day/3
 
@@ -16,8 +7,6 @@ constexpr int make_const() {
   return 12;
 }
 unsigned long part_one() {
-  // Simple column-wise count of each bit in each line. There might be some way
-  // to abuse binary operations.
   // constexpr std::size_t n = 12;
   constexpr auto n = make_const();
   std::ifstream fin("../input.txt");

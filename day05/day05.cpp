@@ -1,19 +1,4 @@
-#include <algorithm>
-#include <array>
-#include <bitset>
-#include <compare>
-#include <cstdio>
-#include <cstdlib>
-#include <fstream>
-#include <functional>
-#include <iostream>
-#include <iterator>
-#include <map>
-#include <tuple>
-#include <unordered_map>
-#include <unordered_set>
-#include <utility>
-#include <vector>
+#include "../aoc.h"
 
 // Prompt: https://adventofcode.com/2021/day/5
 struct coord {

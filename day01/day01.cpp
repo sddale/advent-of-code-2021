@@ -1,11 +1,4 @@
-#include <algorithm>
-#include <cstdint>
-#include <fstream>
-#include <iostream>
-#include <iterator>
-#include <numeric>
-#include <string>
-#include <vector>
+#include "../aoc.h"
 
 // Prompt: https://adventofcode.com/2021/day/1
 
