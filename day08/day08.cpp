@@ -2,7 +2,7 @@
 
 #include "../aoc.h"
 
-// Prompt: https://adventofcode.com/2021/day/7
+// Prompt: https://adventofcode.com/2021/day/8
 
 auto part_one() -> const int {
   std::ifstream fin("../input.txt");
