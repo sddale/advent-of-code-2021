@@ -1,5 +1,3 @@
-#include <numeric>
-
 #include "../aoc.h"
 
 // Prompt: https://adventofcode.com/2021/day/8
