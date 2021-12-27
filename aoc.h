@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <array>
 #include <bitset>
+#include <cctype>
 #include <compare>
 #include <cstddef>
 #include <cstdint>
