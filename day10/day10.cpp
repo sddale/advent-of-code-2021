@@ -68,6 +68,6 @@ auto part_two() -> const long {
 
 int main() {
   std::cout << "Part one: " << part_one() << std::endl;
-  std::cout << "Part two: " << part_two() << std::endl;  // 1327014
+  std::cout << "Part two: " << part_two() << std::endl;
   return 0;
 }

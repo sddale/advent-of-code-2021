@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(day09)
+project(day10)
 
 set(CMAKE_CXX_STANDARD 20)
 
