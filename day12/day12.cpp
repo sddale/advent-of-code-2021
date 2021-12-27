@@ -1,12 +1,3 @@
-#include <cassert>
-#include <cctype>
-#include <fstream>
-#include <ios>
-#include <string>
-#include <string_view>
-#include <unordered_map>
-#include <unordered_set>
-
 #include "aoc.h"
 
 // Prompt: https://adventofcode.com/2021/day/12
