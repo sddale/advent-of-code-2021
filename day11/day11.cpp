@@ -1,7 +1,8 @@
+#include <cassert>
+
 #include "aoc.h"
 
 // Prompt: https://adventofcode.com/2021/day/11
-constexpr int line_length() { return 10; }
 struct octopus {
   octopus(int e) : energy{e} {};
   static int total_flashes;
@@ -31,9 +32,9 @@ struct octopus {
 };
 int octopus::total_flashes;
 auto part_one() -> const int {
-  constexpr int n_days = 100;
-  constexpr int cols = line_length();
+  constexpr int n_days = 100, cols = 10, rows = 10;
   std::ifstream fin("../input.txt");
+  assert(fin.is_open());
   std::vector<int> v;
   std::vector<std::vector<octopus>> octopi;
   std::move(std::istream_iterator<uint8_t>(fin),
@@ -45,7 +46,6 @@ auto part_one() -> const int {
     }
     octopi.push_back(std::move(row));
   }
-  const int rows = octopi.size();
   for (int r = 0; r < rows; ++r) {
     for (int c = 0; c < cols; ++c) {
       std::vector<octopus*> neighbors;
@@ -92,8 +92,9 @@ auto part_one() -> const int {
 }
 
 auto part_two() -> const int {
-  constexpr int cols = line_length();
+  constexpr int cols = 10, rows = 10;
   std::ifstream fin("../input.txt");
+  assert(fin.is_open());
   std::vector<int> v;
   std::vector<std::vector<octopus>> octopi;
   std::move(std::istream_iterator<uint8_t>(fin),
@@ -105,7 +106,6 @@ auto part_two() -> const int {
     }
     octopi.push_back(std::move(row));
   }
-  const int rows = octopi.size();
   for (int r = 0; r < rows; ++r) {
     for (int c = 0; c < cols; ++c) {
       std::vector<octopus*> neighbors;
@@ -136,7 +136,7 @@ auto part_two() -> const int {
       octopi[r][c].neighbors = std::move(neighbors);
     }
   }
-  for (int step = 1;; ++step) {
+  for (int step = 1; /*blank*/; ++step) {
     bool all_flashing = true;
     for (int r = 0; r < rows; ++r) {
       for (int c = 0; c < cols; ++c) {
