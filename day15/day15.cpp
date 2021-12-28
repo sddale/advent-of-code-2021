@@ -28,7 +28,7 @@ auto dijkstras(std::vector<std::string>& v) -> const int {
     const auto min = q.top();
     q.pop();
     const int x = std::move(min.x), y = std::move(min.y);
-    if (min.x == goal.x and min.y == goal.y) {
+    if (x == goal.x and y == goal.y) {
       return min.val;
     }
     auto check_neighbor = [&](const int& x2, const int& y2) {
