@@ -86,7 +86,6 @@ auto part_two() -> const int {
   }
   return dijkstras(v);
 }
-using namespace std::literals;
 int main() {
   std::cout << "Part one:\n" << part_one() << std::endl;
   std::cout << "Part two:\n" << part_two() << std::endl;
